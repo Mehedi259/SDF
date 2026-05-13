@@ -187,18 +187,39 @@ h1 strong { font-weight: 500; color: var(--navy-light); }
   background: var(--navy);
 }
 .pillar {
-  padding: 3rem 5%;
-  border-right: 1px solid rgba(255,255,255,.1);
+  padding: 4.5rem 6%;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.4s ease;
 }
 .pillar:last-child { border-right: none; }
+.pillar:hover { background: rgba(255, 255, 255, 0.03); }
 .pillar-title {
+  position: relative;
   font-family: 'Playfair Display', serif;
-  font-size: 1rem;
+  font-size: 1.4rem;
   font-weight: 400;
-  color: #A8C4E0;
-  margin-bottom: .5rem;
+  color: #FFFFFF;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+  padding-top: 1.2rem;
 }
-.pillar p { font-size: .83rem; color: rgba(255,255,255,.55); line-height: 1.75; font-weight: 300; }
+.pillar-title::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--navy-light);
+  transition: width 0.4s ease, background 0.4s ease;
+}
+.pillar:hover .pillar-title::before { width: 50px; background: #A8C4E0; }
+.pillar p { 
+  font-size: 0.95rem; 
+  color: rgba(255, 255, 255, 0.75); 
+  line-height: 1.8; 
+  font-weight: 300; 
+}
 
 /* ABOUT */
 #about {
