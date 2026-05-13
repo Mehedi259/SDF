@@ -296,15 +296,41 @@ h1 strong { font-weight: 500; color: var(--navy-light); }
 }
 .who-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 3.2rem; }
 .who-card {
-  padding: 2.2rem;
+  position: relative;
+  padding: 2.5rem 2.2rem;
   border: 1px solid var(--border);
   border-radius: 5px;
-  transition: border-color .25s, transform .22s;
+  background: var(--white);
+  overflow: hidden;
+  z-index: 1;
+  transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
 }
-.who-card:hover { border-color: var(--navy-light); transform: translateY(-3px); }
-.card-bar { width: 26px; height: 2px; background: var(--navy-light); border-radius: 1px; margin-bottom: 1.2rem; }
-.who-card h4 { font-size: .92rem; font-weight: 500; color: var(--navy); margin-bottom: .65rem; }
-.who-card p { font-size: .83rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+.who-card::before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--navy);
+  transition: top 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: -1;
+}
+.who-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--navy);
+  box-shadow: 0 12px 24px rgba(27, 45, 79, 0.15);
+}
+.who-card:hover::before { top: 0; }
+.card-bar { 
+  width: 26px; height: 2px; background: var(--navy-light); border-radius: 1px; margin-bottom: 1.4rem; 
+  transition: background 0.4s, width 0.4s;
+}
+.who-card:hover .card-bar { background: var(--blue-tint); width: 40px; }
+.who-card h4 { font-size: .92rem; font-weight: 500; color: var(--navy); margin-bottom: .65rem; transition: color 0.4s; }
+.who-card:hover h4 { color: var(--white); }
+.who-card p { font-size: .83rem; color: var(--muted); line-height: 1.75; font-weight: 300; transition: color 0.4s; }
+.who-card:hover p { color: rgba(255, 255, 255, 0.8); }
 
 /* CONTACT */
 #contact {
